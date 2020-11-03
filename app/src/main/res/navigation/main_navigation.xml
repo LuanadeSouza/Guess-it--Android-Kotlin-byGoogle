@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright 2018, The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,7 +7,7 @@
 
     <fragment
         android:id="@+id/title_destination"
-        android:name="com.example.android.guesstheword.screens.title.TitleFragment"
+        android:name="br.com.luanadev.guessitapplication.screens.title.TitleFragment"
         android:label="title_fragment"
         tools:layout="@layout/title_fragment">
         <action
@@ -35,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/game_destination"
-        android:name="com.example.android.guesstheword.screens.game.GameFragment"
+        android:name="br.com.luanadev.guessitapplication.screens.game.GameFragment"
         android:label="game_fragment"
         tools:layout="@layout/game_fragment">
         <action
@@ -50,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/score_destination"
-        android:name="com.example.android.guesstheword.screens.score.ScoreFragment"
+        android:name="br.com.luanadev.guessitapplication.screens.score.ScoreFragment"
         android:label="score_fragment"
         tools:layout="@layout/score_fragment">
         <action
