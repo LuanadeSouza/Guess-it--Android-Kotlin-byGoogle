@@ -1,17 +1,21 @@
 package br.com.luanadev.guessitapplication.screens.game
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import br.com.luanadev.guessitapplication.R
 import br.com.luanadev.guessitapplication.databinding.GameFragmentBinding
 
 class GameFragment : Fragment() {
 
+    private lateinit var viewModel: GameViewModel
     // The current word
     private var word = ""
 
@@ -33,6 +37,9 @@ class GameFragment : Fragment() {
             container,
             false
         )
+
+        Log.i("GameFragment", "Called ViewModelProviders.of!")
+        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
 
         resetList()
         nextWord()
@@ -119,4 +126,6 @@ class GameFragment : Fragment() {
     private fun updateScoreText() {
         binding.scoreText.text = score.toString()
     }
+
+
 }
