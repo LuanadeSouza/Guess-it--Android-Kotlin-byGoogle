@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Adivinhe a Palavra!</string>
+    <string name="app_name">Qual é a Palavra?</string>
     <string name="skip">Pular</string>
     <string name="play_again">Jogar de novo</string>
     <string name="you_scored"> Você pontuou</string>
     <string name="title_text">Adivinhe a Palavra!</string>
     <string name="play_button">Play</string>
     <string name="get_ready">Fique pronto</string>
-    <string name="got_it">Entendi!</string>
+    <string name="got_it">Próximo</string>
     <string name="word_is">A palavra é…</string>
     <string name="quote_format">\"%s\"</string>
     <string name="score_format">Pontuação atual: %d</string>

@@ -1,30 +1,40 @@
 package br.com.luanadev.guessitapplication.screens.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+
+/**
+ * ViewModel containing all the logic needed to run the game
+ */
 class GameViewModel : ViewModel() {
 
     // The current word
-     var word = MutableLiveData<String>()
+    private val _word = MutableLiveData<String>()
+    val word: LiveData<String>
+        get() = _word
+
 
     // The current score
-    var score = MutableLiveData<Int>()
+    private val _score = MutableLiveData<Int>()
+    val score: LiveData<Int>
+        get() = _score
+
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
 
+    // Event which triggers the end of the game
+    private val _eventGameFinish = MutableLiveData<Boolean>()
+    val eventGameFinish: LiveData<Boolean>
+        get() = _eventGameFinish
+
     init {
-        Log.i("GmaeViewModel", "GameViewModel Created!")
         resetList()
         nextWord()
-        score.value = 0
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.i("GmaeViewModel", "GameViewModel Destroy")
+        _score.value = 0
     }
 
     /**
@@ -32,27 +42,27 @@ class GameViewModel : ViewModel() {
      */
     private fun resetList() {
         wordList = mutableListOf(
-            "queen",
+            "rainha",
             "hospital",
-            "basketball",
-            "cat",
-            "change",
-            "snail",
-            "soup",
-            "calendar",
-            "sad",
-            "desk",
-            "guitar",
-            "home",
-            "railway",
+            "basquetebol",
+            "gato",
+            "mudança",
+            "Caracol",
+            "sopa",
+            "calendário",
+            "triste",
+            "mesa",
+            "guitarra",
+            "casa",
+            "estrada de ferro",
             "zebra",
-            "jelly",
-            "car",
-            "crow",
-            "trade",
-            "bag",
-            "roll",
-            "bubble"
+            "geléia",
+            "carro",
+            "Corvo",
+            "comércio",
+            "saco",
+            "lista",
+            "bolha"
         )
         wordList.shuffle()
     }
@@ -63,21 +73,28 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-         //   gameFinished()
+            _eventGameFinish.value = true
         } else {
-            word.value = wordList.removeAt(0)
+            _word.value = wordList.removeAt(0)
         }
     }
 
     /** Methods for buttons presses **/
 
     fun onSkip() {
-        score.value = (score.value)?.minus(1)
+        _score.value = (_score.value)?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
-        score.value = (score.value)?.plus(1)
+        _score.value = (_score.value)?.plus(1)
         nextWord()
     }
+
+    /** Methods for completed events **/
+
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false
+    }
+
 }

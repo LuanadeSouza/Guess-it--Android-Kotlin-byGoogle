@@ -11,6 +11,9 @@ import androidx.navigation.fragment.navArgs
 import br.com.luanadev.guessitapplication.R
 import br.com.luanadev.guessitapplication.databinding.ScoreFragmentBinding
 
+/**
+ * Fragment where the final score is shown, after the game is over
+ */
 class ScoreFragment : Fragment() {
 
     override fun onCreateView(
@@ -39,4 +42,5 @@ class ScoreFragment : Fragment() {
         findNavController().navigate(ScoreFragmentDirections.actionRestart())
     }
 }
+
 

@@ -1,4 +1,4 @@
-package br.com.luanadev.guessitapplication.screens
+package br.com.luanadev.guessitapplication
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
