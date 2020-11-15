@@ -73,7 +73,6 @@ class GameFragment : Fragment() {
                 viewModel.onGameFinishComplete()
             }
         })
-
         return binding.root
 
     }
