@@ -11,12 +11,10 @@ Arquitetura do aplicativo
 
 <img width="769" alt="Screen Shot 2021-06-08 at 10 18 34" src="https://user-images.githubusercontent.com/49947803/121192115-fb090080-c842-11eb-81fa-6340178b4ce7.png">
 
-Um controlador de IU é uma classe baseada em IU, como Activity ou Fragment. 
+O aplicativo agora usa ViewModel objetos, para que os dados do aplicativo sobrevivam às alterações de configuração do dispositivo,
+como rotações de tela e alterações na disponibilidade do teclado. 
+Também adicionnei observáveis LiveData, para que as visualizações sejam notificadas automaticamente quando os dados observados forem alterados.
 
 
-A ViewModel contém dados a serem exibidos em um fragmento ou atividade associada ao ViewModel. 
-
-
-A ViewModelFactory instancia ViewModel objetos, com ou sem parâmetros do construtor.
 
 
