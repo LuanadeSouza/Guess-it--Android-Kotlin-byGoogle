@@ -13,9 +13,7 @@ import androidx.navigation.fragment.navArgs
 import br.com.luanadev.guessitapplication.R
 import br.com.luanadev.guessitapplication.databinding.ScoreFragmentBinding
 
-/**
- * Fragment where the final score is shown, after the game is over
- */
+@Suppress("UNREACHABLE_CODE")
 class ScoreFragment : Fragment() {
 
     private lateinit var viewModel: ScoreViewModel
@@ -27,7 +25,6 @@ class ScoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate view and obtain an instance of the binding class.
         val binding: ScoreFragmentBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.score_fragment,
@@ -35,28 +32,10 @@ class ScoreFragment : Fragment() {
             false
         )
 
-        val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
-
-        viewModelFactory = ScoreViewModelFactory(scoreFragmentArgs.score)
+        viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(requireArguments()).score)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
-
-        // Add observer for score
-        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
-
-        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
-
-        // Navigates back to title when button is pressed
-        viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
-            if (playAgain) {
-                findNavController().navigate(ScoreFragmentDirections.actionRestart())
-                viewModel.onPlayAgainComplete()
-            }
-        })
-
+        binding.scoreText.text = viewModel.score.toString()
         return binding.root
     }
 }
-
