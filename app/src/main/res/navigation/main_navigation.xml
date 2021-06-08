@@ -2,15 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/title_destination">
+    app:startDestination="@id/guess_word_destination">
 
     <fragment
-        android:id="@+id/title_destination"
-        android:name="br.com.luanadev.guessitapplication.screens.title.TitleFragment"
+        android:id="@+id/guess_word_destination"
+        android:name="br.com.luanadev.guessitapplication.screens.guessword.GuessWordFragment"
         android:label="title_fragment"
-        tools:layout="@layout/title_fragment">
+        tools:layout="@layout/guess_word_fragment">
         <action
-            android:id="@+id/action_title_to_game"
+            android:id="@+id/action_guess_word_to_game"
             app:destination="@id/game_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -31,7 +31,7 @@
             app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@+id/title_destination" />
+            app:popUpTo="@+id/guess_word_destination" />
     </fragment>
     <fragment
         android:id="@+id/score_destination"
@@ -45,7 +45,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@+id/title_destination" />
+            app:popUpTo="@+id/guess_word_destination" />
         <argument
             android:name="score"
             android:defaultValue="0"
