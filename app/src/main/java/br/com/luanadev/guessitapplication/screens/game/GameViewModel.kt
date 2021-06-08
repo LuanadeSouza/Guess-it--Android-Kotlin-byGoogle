@@ -9,13 +9,8 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
-    private val timer: CountDownTimer
 
-    companion object {
-        private const val DONE = 0L
-        private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME = 60000L
-    }
+    private val timer: CountDownTimer
 
     private val _word = MutableLiveData<String>()
     val word: LiveData<String>
@@ -26,8 +21,9 @@ class GameViewModel : ViewModel() {
         get() = _score
 
     private val _currentTime = MutableLiveData<Long>()
-    val currentTime: LiveData<Long>
+    private val currentTime: LiveData<Long>
         get() = _currentTime
+
 
     val currentTimeString = Transformations.map(currentTime) { time ->
         DateUtils.formatElapsedTime(time)
@@ -94,30 +90,34 @@ class GameViewModel : ViewModel() {
     }
 
     fun onSkip() {
-        _score.value = (score.value)?.minus(1)
+        _score.value = (_score.value)?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
-        _score.value = (score.value)?.plus(1)
+        _score.value = (_score.value)?.plus(1)
         nextWord()
     }
 
     private fun nextWord() {
-        if (wordList.isNotEmpty()) {
-            onGameFinish()
+        if (wordList.isEmpty()) {
+            resetList()
+
         } else {
             _word.value = wordList.removeAt(0)
         }
-    }
-
-    fun onGameFinish() {
-        _eventGameFinish.value = true
     }
 
     fun onGameFinishComplete() {
         _eventGameFinish.value = false
     }
 
-
+    fun onGameFinish() {
+        _eventGameFinish.value = true
+    }
+    companion object {
+        private const val DONE = 0L
+        private const val ONE_SECOND = 1000L
+        private const val COUNTDOWN_TIME = 60000L
+    }
 }

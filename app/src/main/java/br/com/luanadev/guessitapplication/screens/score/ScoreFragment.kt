@@ -30,7 +30,7 @@ class ScoreFragment : Fragment() {
             false
         )
         viewModelFactory =
-            ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(requireArguments()).score)
+            ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
         binding.scoreViewModel = viewModel

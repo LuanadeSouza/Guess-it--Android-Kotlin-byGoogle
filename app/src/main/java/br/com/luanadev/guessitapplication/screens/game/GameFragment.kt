@@ -16,13 +16,13 @@ import br.com.luanadev.guessitapplication.databinding.GameFragmentBinding
 class GameFragment : Fragment() {
 
     private lateinit var binding: GameFragmentBinding
+
     private lateinit var viewModel: GameViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.game_fragment,
@@ -30,7 +30,6 @@ class GameFragment : Fragment() {
             false
         )
         Log.i("GameFragment", "Called ViewModelProvider.get")
-
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
         binding.gameViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
